@@ -1,0 +1,27 @@
+version: "2.1"
+
+services:
+  eureka:
+    build: eureka
+    mem_limit: 512m
+    ports:
+      - "8761:8761"
+    networks:
+      - "hotels-cities-network"
+  cities:
+    build: cities
+    mem_limit: 512m
+    ports:
+      - "8081:8081"
+    networks:
+      - "hotels-cities-network"
+  hotels:
+    build: hotels
+    mem_limit: 512m
+    ports:
+      - "8082:8082"
+    networks:
+      - "hotels-cities-network"
+
+networks:
+  hotels-cities-network:
