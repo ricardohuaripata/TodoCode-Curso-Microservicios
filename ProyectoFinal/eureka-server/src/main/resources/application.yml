@@ -1,3 +1,8 @@
 spring:
   application:
     name: eureka-server
+  config:
+    import: configserver:http://root:s3cr3t@localhost:8888
+  cloud:
+    config:
+      fail-fast: true

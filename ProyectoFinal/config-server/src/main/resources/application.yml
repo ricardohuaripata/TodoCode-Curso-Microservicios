@@ -13,4 +13,4 @@ spring:
       password: s3cr3t
 
 server:
-  port: 8081
+  port: 8888

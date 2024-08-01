@@ -1,7 +1,17 @@
 server:
-  port: 8084
+  port: 8083
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    database-platform: org.hibernate.dialect.MySQL8Dialect
+  datasource:
+    url: jdbc:mysql://localhost:3306/shop_sales?serverTimezone=UTC
+    username: root
+    password:
