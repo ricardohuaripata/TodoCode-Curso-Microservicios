@@ -4,23 +4,18 @@ import java.util.List;
 
 import com.todocodeacademy.shop.carts_service.dto.CartItemDto;
 import com.todocodeacademy.shop.carts_service.model.Cart;
-import com.todocodeacademy.shop.carts_service.model.CartItem;
 import com.todocodeacademy.shop.carts_service.response.CartResponse;
 
 public interface ICartService {
     public Cart createCart();
 
-    public List<Cart> findCarts();
-
-    public Cart findCart(Long id);
+    public List<Cart> findAllCarts();
 
     public CartResponse findCartResponse(Long id);
 
-    public CartItem findCartItem(Long id);
+    public CartResponse addToCart(Long cartId, CartItemDto cartItemDto);
 
-    public Cart addToCart(Long cartId, CartItemDto cartItemDto);
-
-    public Cart removeFromCart(Long cartItemId);
+    public CartResponse removeFromCart(Long cartItemId);
 
     public void deleteCart(Long id);
 }

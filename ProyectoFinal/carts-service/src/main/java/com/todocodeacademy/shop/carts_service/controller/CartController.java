@@ -25,12 +25,12 @@ public class CartController {
     private CartService cartService;
 
     @GetMapping()
-    public ResponseEntity<?> findAllCarts() {
-        return new ResponseEntity<>(cartService.findCarts(), HttpStatus.OK);
+    public ResponseEntity<?> getAllCarts() {
+        return new ResponseEntity<>(cartService.findAllCarts(), HttpStatus.OK);
     }
 
     @GetMapping("/{cartId}")
-    public ResponseEntity<?> findCart(@PathVariable Long cartId) {
+    public ResponseEntity<?> getCart(@PathVariable Long cartId) {
         return new ResponseEntity<>(cartService.findCartResponse(cartId), HttpStatus.OK);
     }
 

@@ -43,13 +43,8 @@ public class CartService implements ICartService {
     }
 
     @Override
-    public List<Cart> findCarts() {
+    public List<Cart> findAllCarts() {
         return cartRepository.findAll();
-    }
-
-    @Override
-    public Cart findCart(Long id) {
-        return cartRepository.findById(id).orElseThrow(CartNotFoundException::new);
     }
 
     @Override
@@ -59,7 +54,7 @@ public class CartService implements ICartService {
     }
 
     @Override
-    public Cart addToCart(Long cartId, CartItemDto cartItemDto) {
+    public CartResponse addToCart(Long cartId, CartItemDto cartItemDto) {
 
         Cart cart = this.findCart(cartId);
 
@@ -82,7 +77,8 @@ public class CartService implements ICartService {
 
         cart.setUpdatedAt(new Date());
 
-        return cartRepository.save(cart);
+        CartResponse cartResponse = buildCartResponse(cartRepository.save(cart));
+        return cartResponse;
     }
 
     @Override
@@ -92,19 +88,24 @@ public class CartService implements ICartService {
     }
 
     @Override
-    public Cart removeFromCart(Long cartItemId) {
+    public CartResponse removeFromCart(Long cartItemId) {
         CartItem cartItem = this.findCartItem(cartItemId);
         Cart cart = this.findCart(cartItem.getCart().getId());
 
         cartItemRepository.delete(cartItem);
         cart.setUpdatedAt(new Date());
 
-        return cartRepository.save(cart);
+        CartResponse cartResponse = buildCartResponse(cartRepository.save(cart));
+
+        return cartResponse;
     }
 
-    @Override
-    public CartItem findCartItem(Long id) {
+    private CartItem findCartItem(Long id) {
         return cartItemRepository.findById(id).orElseThrow(CartItemNotFoundException::new);
+    }
+
+    private Cart findCart(Long id) {
+        return cartRepository.findById(id).orElseThrow(CartNotFoundException::new);
     }
 
     private CartResponse buildCartResponse(Cart cart) {
@@ -113,7 +114,7 @@ public class CartService implements ICartService {
         for (CartItem item : cart.getItems()) {
             productsIds.add(item.getProductId());
         }
-
+        // Extraemos los productos del servicio productos
         List<Product> products = productsServiceClient.getProducts(productsIds);
 
         CartResponse cartResponse = new CartResponse();
@@ -127,27 +128,22 @@ public class CartService implements ICartService {
 
         for (CartItem item : cart.getItems()) {
 
-            Product product = new Product();
+            for (Product product : products) {
+                if (product.getId() == item.getProductId()) {
+                    BigDecimal itemTotalPrice = product.getPrice().multiply(BigDecimal.valueOf(item.getQuantity()));
 
-            for (Product p : products) {
-                if (p.getId() == item.getProductId()) {
-                    product = p;
+                    totalPrice = totalPrice.add(itemTotalPrice);
+                    totalQuantity += item.getQuantity();
+
+                    CartItemResponse cartItemResponse = new CartItemResponse();
+                    cartItemResponse.setId(item.getId());
+                    cartItemResponse.setQuantity(item.getQuantity());
+                    cartItemResponse.setProduct(product);
+
+                    cartItemsResponse.add(cartItemResponse);
                     break;
                 }
             }
-
-            BigDecimal itemTotalPrice = product.getPrice().multiply(BigDecimal.valueOf(item.getQuantity()));
-
-            totalPrice = totalPrice.add(itemTotalPrice);
-            totalQuantity += item.getQuantity();
-
-            CartItemResponse cartItemResponse = new CartItemResponse();
-            cartItemResponse.setId(item.getId());
-            cartItemResponse.setQuantity(item.getQuantity());
-            cartItemResponse.setProduct(product);
-
-            cartItemsResponse.add(cartItemResponse);
-
         }
 
         cartResponse.setItems(cartItemsResponse);
