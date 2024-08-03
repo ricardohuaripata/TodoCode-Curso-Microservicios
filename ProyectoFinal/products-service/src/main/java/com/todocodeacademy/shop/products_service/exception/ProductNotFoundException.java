@@ -1,4 +1,4 @@
-package com.todocodeacademy.shop.products_service.exceptions;
+package com.todocodeacademy.shop.products_service.exception;
 
 public class ProductNotFoundException extends RuntimeException {
     public ProductNotFoundException() {

@@ -3,10 +3,19 @@ package com.todocodeacademy.shop.carts_service.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.todocodeacademy.shop.carts_service.dto.CartItemDto;
 import com.todocodeacademy.shop.carts_service.service.CartService;
+
+import jakarta.validation.Valid;
 
 @RestController
 @RequestMapping("/carts")
@@ -16,48 +25,33 @@ public class CartController {
     private CartService cartService;
 
     @GetMapping()
-    public ResponseEntity<?> findAll() {
-        try {
-            return new ResponseEntity<>(cartService.findCarts(), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity<?> findAllCarts() {
+        return new ResponseEntity<>(cartService.findCarts(), HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<?> find(@PathVariable Long id) {
-        try {
-            return new ResponseEntity<>(cartService.findCart(id), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    @GetMapping("/{cartId}")
+    public ResponseEntity<?> findCart(@PathVariable Long cartId) {
+        return new ResponseEntity<>(cartService.getCartResponse(cartId), HttpStatus.OK);
     }
 
     @PostMapping()
-    public ResponseEntity<?> create() {
-        try {
-            return new ResponseEntity<>(cartService.createCart(), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    public ResponseEntity<?> createCart() {
+        return new ResponseEntity<>(cartService.createCart(), HttpStatus.OK);
     }
 
-    @PutMapping()
-    public ResponseEntity<?> update(@RequestBody CartItemDto cartItemDto) {
-        try {
-            return new ResponseEntity<>(cartService.updateCart(cartItemDto), HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    @PutMapping("/{cartId}")
+    public ResponseEntity<?> addToCart(@PathVariable Long cartId, @RequestBody @Valid CartItemDto cartItemDto) {
+        return new ResponseEntity<>(cartService.addToCart(cartId, cartItemDto), HttpStatus.OK);
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> delete(@PathVariable Long id) {
-        try {
-            cartService.deleteCart(id);
-            return new ResponseEntity<>("Successfully deleted.", HttpStatus.OK);
-        } catch (Exception e) {
-            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
+    @DeleteMapping("/{cartId}")
+    public ResponseEntity<?> deleteCart(@PathVariable Long cartId) {
+        cartService.deleteCart(cartId);
+        return new ResponseEntity<>("Successfully deleted.", HttpStatus.OK);
+    }
+
+    @DeleteMapping("/items/{cartItemId}")
+    public ResponseEntity<?> removeFromCart(@PathVariable Long cartItemId) {
+        return new ResponseEntity<>(cartService.removeFromCart(cartItemId), HttpStatus.OK);
     }
 }

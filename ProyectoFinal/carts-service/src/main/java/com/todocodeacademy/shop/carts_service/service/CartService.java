@@ -7,10 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.todocodeacademy.shop.carts_service.dto.CartItemDto;
+import com.todocodeacademy.shop.carts_service.exception.CartItemNotFoundException;
+import com.todocodeacademy.shop.carts_service.exception.CartNotFoundException;
+import com.todocodeacademy.shop.carts_service.feign.IProductsServiceClient;
 import com.todocodeacademy.shop.carts_service.model.Cart;
 import com.todocodeacademy.shop.carts_service.model.CartItem;
+import com.todocodeacademy.shop.carts_service.model.Product;
 import com.todocodeacademy.shop.carts_service.repository.ICartItemRepository;
 import com.todocodeacademy.shop.carts_service.repository.ICartRepository;
+import com.todocodeacademy.shop.carts_service.response.CartResponse;
 
 @Service
 public class CartService implements ICartService {
@@ -20,6 +25,9 @@ public class CartService implements ICartService {
 
     @Autowired
     private ICartItemRepository cartItemRepository;
+
+    @Autowired
+    private IProductsServiceClient productsServiceClient;
 
     @Override
     public Cart createCart() {
@@ -38,27 +46,37 @@ public class CartService implements ICartService {
 
     @Override
     public Cart findCart(Long id) {
-        return cartRepository.findById(id).orElse(null);
+        return cartRepository.findById(id).orElseThrow(CartNotFoundException::new);
     }
 
     @Override
-    public Cart updateCart(CartItemDto cartItemDto) {
+    public CartResponse getCartResponse(Long id) {
+        Cart cart = this.findCart(id);
+        return productsServiceClient.buildCartResponse(cart);
+    }
 
-        Cart cart = findCart(cartItemDto.getCartId());
+    @Override
+    public Cart addToCart(Long cartId, CartItemDto cartItemDto) {
 
-        // TODO check find product by id
+        Cart cart = this.findCart(cartId);
 
-        if (cart == null) {
-            return null;
+        Product product = productsServiceClient.getProduct(cartItemDto.getProductId());
+
+        CartItem cartItem = cartItemRepository.findByCartAndProductId(cart, product.getId());
+
+        // Si el artículo ya existe en el carrito
+        if (cartItem != null) {
+            cartItem.setQuantity(cartItemDto.getQuantity());
+            cartItemRepository.save(cartItem);
+
+        } else {
+            CartItem newCartItem = new CartItem();
+            newCartItem.setCart(cart);
+            newCartItem.setProductId(product.getId());
+            newCartItem.setQuantity(cartItemDto.getQuantity());
+            cartItemRepository.save(newCartItem);
         }
 
-        CartItem newCartItem = new CartItem();
-        newCartItem.setCart(cart);
-        newCartItem.setProductId(cartItemDto.getProductId());
-        newCartItem.setQuantity(cartItemDto.getQuantity());
-        cartItemRepository.save(newCartItem);
-
-        cart.getItems().add(newCartItem);
         cart.setUpdatedAt(new Date());
 
         return cartRepository.save(cart);
@@ -66,7 +84,24 @@ public class CartService implements ICartService {
 
     @Override
     public void deleteCart(Long id) {
-        cartRepository.deleteById(id);
+        Cart cart = this.findCart(id);
+        cartRepository.delete(cart);
+    }
+
+    @Override
+    public Cart removeFromCart(Long cartItemId) {
+        CartItem cartItem = this.findCartItem(cartItemId);
+        Cart cart = this.findCart(cartItem.getCart().getId());
+
+        cartItemRepository.delete(cartItem);
+        cart.setUpdatedAt(new Date());
+
+        return cartRepository.save(cart);
+    }
+
+    @Override
+    public CartItem findCartItem(Long id) {
+        return cartItemRepository.findById(id).orElseThrow(CartItemNotFoundException::new);
     }
 
 }
