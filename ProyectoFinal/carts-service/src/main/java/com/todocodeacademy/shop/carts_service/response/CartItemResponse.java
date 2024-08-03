@@ -1,6 +1,6 @@
 package com.todocodeacademy.shop.carts_service.response;
 
-import java.math.BigDecimal;
+import com.todocodeacademy.shop.carts_service.model.Product;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -9,7 +9,6 @@ import lombok.Setter;
 @Setter
 public class CartItemResponse {
     private Long id;
-    private Long productId;
+    private Product product;
     private Integer quantity;
-    private BigDecimal unitPrice;
 }

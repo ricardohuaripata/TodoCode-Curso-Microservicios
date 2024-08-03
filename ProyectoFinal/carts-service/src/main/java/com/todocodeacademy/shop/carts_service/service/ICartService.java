@@ -14,7 +14,7 @@ public interface ICartService {
 
     public Cart findCart(Long id);
 
-    public CartResponse getCartResponse(Long id);
+    public CartResponse findCartResponse(Long id);
 
     public CartItem findCartItem(Long id);
 

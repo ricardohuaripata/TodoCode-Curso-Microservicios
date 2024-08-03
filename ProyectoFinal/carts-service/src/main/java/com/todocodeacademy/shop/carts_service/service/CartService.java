@@ -1,5 +1,7 @@
 package com.todocodeacademy.shop.carts_service.service;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -15,6 +17,7 @@ import com.todocodeacademy.shop.carts_service.model.CartItem;
 import com.todocodeacademy.shop.carts_service.model.Product;
 import com.todocodeacademy.shop.carts_service.repository.ICartItemRepository;
 import com.todocodeacademy.shop.carts_service.repository.ICartRepository;
+import com.todocodeacademy.shop.carts_service.response.CartItemResponse;
 import com.todocodeacademy.shop.carts_service.response.CartResponse;
 
 @Service
@@ -50,9 +53,9 @@ public class CartService implements ICartService {
     }
 
     @Override
-    public CartResponse getCartResponse(Long id) {
+    public CartResponse findCartResponse(Long id) {
         Cart cart = this.findCart(id);
-        return productsServiceClient.buildCartResponse(cart);
+        return this.buildCartResponse(cart);
     }
 
     @Override
@@ -102,6 +105,56 @@ public class CartService implements ICartService {
     @Override
     public CartItem findCartItem(Long id) {
         return cartItemRepository.findById(id).orElseThrow(CartItemNotFoundException::new);
+    }
+
+    private CartResponse buildCartResponse(Cart cart) {
+        ArrayList<Long> productsIds = new ArrayList<>();
+
+        for (CartItem item : cart.getItems()) {
+            productsIds.add(item.getProductId());
+        }
+
+        List<Product> products = productsServiceClient.getProducts(productsIds);
+
+        CartResponse cartResponse = new CartResponse();
+        cartResponse.setId(cart.getId());
+        cartResponse.setCreatedAt(cart.getCreatedAt());
+        cartResponse.setUpdatedAt(cart.getUpdatedAt());
+
+        List<CartItemResponse> cartItemsResponse = new ArrayList<>();
+        BigDecimal totalPrice = BigDecimal.ZERO;
+        Integer totalQuantity = 0;
+
+        for (CartItem item : cart.getItems()) {
+
+            Product product = new Product();
+
+            for (Product p : products) {
+                if (p.getId() == item.getProductId()) {
+                    product = p;
+                    break;
+                }
+            }
+
+            BigDecimal itemTotalPrice = product.getPrice().multiply(BigDecimal.valueOf(item.getQuantity()));
+
+            totalPrice = totalPrice.add(itemTotalPrice);
+            totalQuantity += item.getQuantity();
+
+            CartItemResponse cartItemResponse = new CartItemResponse();
+            cartItemResponse.setId(item.getId());
+            cartItemResponse.setQuantity(item.getQuantity());
+            cartItemResponse.setProduct(product);
+
+            cartItemsResponse.add(cartItemResponse);
+
+        }
+
+        cartResponse.setItems(cartItemsResponse);
+        cartResponse.setTotalPrice(totalPrice);
+        cartResponse.setTotalQuantity(totalQuantity);
+
+        return cartResponse;
     }
 
 }
