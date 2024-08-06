@@ -1,0 +1,48 @@
+version: "2.1"
+
+services:
+  config-server:
+    build: config-server
+    mem_limit: 512m
+    ports:
+      - "8888:8888"
+    networks:
+      - "shop-network"
+  eureka-server:
+    build: eureka-server
+    mem_limit: 512m
+    ports:
+      - "8761:8761"
+    networks:
+      - "shop-network"
+  products-service:
+    build: products-service
+    mem_limit: 512m
+    ports:
+      - "8081:8081"
+    networks:
+      - "shop-network"
+  carts-service:
+    build: carts-service
+    mem_limit: 512m
+    ports:
+      - "8082:8082"
+    networks:
+      - "shop-network"
+  sales-service:
+    build: sales-service
+    mem_limit: 512m
+    ports:
+      - "8083:8083"
+    networks:
+      - "shop-network"
+  api-gateway:
+    build: api-gateway
+    mem_limit: 512m
+    ports:
+      - "443:443"
+    networks:
+      - "shop-network"
+
+networks:
+  shop-network:

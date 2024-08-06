@@ -3,6 +3,7 @@ package com.todocodeacademy.shop.products_service.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -18,13 +19,18 @@ import com.todocodeacademy.shop.products_service.dto.ProductDto;
 import com.todocodeacademy.shop.products_service.service.ProductService;
 
 import jakarta.validation.Valid;
+import lombok.extern.slf4j.Slf4j;
 
 @RestController
 @RequestMapping("/products")
+@Slf4j
 public class ProductController {
 
     @Autowired
     private ProductService productService;
+
+    @Value("${server.port}")
+    private int serverPort; // Obtenemos el puerto para probar Load Balancer
 
     @GetMapping()
     public ResponseEntity<?> getAllProducts() {
@@ -38,6 +44,7 @@ public class ProductController {
 
     @PostMapping("/find")
     public ResponseEntity<?> getProducts(@RequestBody List<Long> productIds) {
+        log.info("Probando Load Balancer, saludos desde el puerto " + serverPort);
         return new ResponseEntity<>(productService.findProductsByIdList(productIds), HttpStatus.OK);
     }
 

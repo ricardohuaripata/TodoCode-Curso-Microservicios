@@ -1,0 +1,2447 @@
+{
+	"info": {
+		"_postman_id": "1ccdada6-39fb-45aa-ba42-2e2ac1a0bff3",
+		"name": "TodoCodeAcademy",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25547682"
+	},
+	"item": [
+		{
+			"name": "restaurante",
+			"item": [
+				{
+					"name": "servicio-platos",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9001/platos/get",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"platos",
+										"get"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"Chaufa\",\r\n    \"precio\": 9.55,\r\n    \"descripcion\": \"Arroz frito con cebolla china, huevo y pollo\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9001/platos/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"platos",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "servicio-ingredientes",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"nombre\": \"ternera\",\r\n    \"listaPlatos\": [\r\n        \"Seco de ternera\"\r\n    ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9002/ingredientes/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9002",
+									"path": [
+										"ingredientes",
+										"create"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"nombre\": \"arroz\",\r\n    \"listaPlatos\": [\r\n        \"Chaufa\",\r\n        \"Lomo Saltado\",\r\n        \"Seco de ternera\"\r\n    ]\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9002/ingredientes/create",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9002",
+											"path": [
+												"ingredientes",
+												"create"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Wed, 24 Jul 2024 12:33:51 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"nombre\": \"arroz\",\n    \"listaPlatos\": [\n        \"Chaufa\",\n        \"Lomo Saltado\",\n        \"Seco de ternera\"\n    ]\n}"
+								}
+							]
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9002/ingredientes/get",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9002",
+									"path": [
+										"ingredientes",
+										"get"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9002/ingredientes/get/plato/Chaufa",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9002",
+									"path": [
+										"ingredientes",
+										"get",
+										"plato",
+										"Chaufa"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "consultorio-medico",
+			"item": [
+				{
+					"name": "servicio-turnos",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fecha\": \"2024-09-15\",\r\n    \"tratamiento\": \"Implante capilar\",\r\n    \"dniPaciente\": \"4123123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9002/turnos/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9002",
+									"path": [
+										"turnos",
+										"create"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9002/turnos/get",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9002",
+									"path": [
+										"turnos",
+										"get"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "servicio-pacientes",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9001/pacientes/get/dni/7312123",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"pacientes",
+										"get",
+										"dni",
+										"7312123"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request Copy",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"dni\": \"7312123\",\r\n    \"nombre\": \"Juan\",\r\n    \"apellido\": \"Pineda\",\r\n    \"fechaNacimiento\": \"2002-05-12\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9001/pacientes/update/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"pacientes",
+										"update",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"dni\": \"4123123\",\r\n    \"nombre\": \"Carlos\",\r\n    \"apellido\": \"Bellido\",\r\n    \"fechaNacimiento\": \"2002-05-18\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9001/pacientes/create",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"pacientes",
+										"create"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "pokeapi",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pokemon/gyarados",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pokemon",
+								"gyarados"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8080/pokemon/gyarados",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8080",
+									"path": [
+										"pokemon",
+										"gyarados"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Wed, 24 Jul 2024 18:41:51 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 130,\n    \"name\": \"gyarados\",\n    \"weight\": 2350,\n    \"height\": 65\n}"
+						}
+					]
+				},
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/pokemon",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"pokemon"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "delivery",
+			"item": [
+				{
+					"name": "servicio_envios",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9001/envios",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"envios"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9001/envios",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9001",
+											"path": [
+												"envios"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 25 Jul 2024 16:48:59 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 1,\n        \"fechaCreacion\": \"2024-05-18\",\n        \"estado\": \"En almacen\",\n        \"descripcion\": \"El paquete contiene 2 camisetas y 1 pantalon corto\",\n        \"destinatario\": 1\n    },\n    {\n        \"id\": 2,\n        \"fechaCreacion\": \"2024-05-15\",\n        \"estado\": \"En almacen\",\n        \"descripcion\": \"El paquete contiene 3 camisetas y 2 pantalon corto\",\n        \"destinatario\": 3\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"fechaCreacion\": \"2024-05-11\",\r\n    \"estado\": \"En almacen\",\r\n    \"descripcion\": \"El paquete contiene 5 camisetas y 3 pantalon corto\",\r\n    \"destinatario\": 1\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9001/envios",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"envios"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"fechaCreacion\": \"2024-05-18\",\r\n    \"estado\": \"En almacen\",\r\n    \"descripcion\": \"El paquete contiene 2 camisetas y 1 pantalon corto\",\r\n    \"destinatario\": 1\r\n    \r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9001/envios",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9001",
+											"path": [
+												"envios"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 25 Jul 2024 16:46:21 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"fechaCreacion\": \"2024-05-18\",\n    \"estado\": \"En almacen\",\n    \"descripcion\": \"El paquete contiene 2 camisetas y 1 pantalon corto\",\n    \"destinatario\": 1\n}"
+								}
+							]
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9001/envios/destinatario/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9001",
+									"path": [
+										"envios",
+										"destinatario",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9001/envios/destinatario/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9001",
+											"path": [
+												"envios",
+												"destinatario",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 25 Jul 2024 16:49:37 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 1,\n        \"fechaCreacion\": \"2024-05-18\",\n        \"estado\": \"En almacen\",\n        \"descripcion\": \"El paquete contiene 2 camisetas y 1 pantalon corto\",\n        \"destinatario\": 1\n    },\n    {\n        \"id\": 3,\n        \"fechaCreacion\": \"2024-05-11\",\n        \"estado\": \"En almacen\",\n        \"descripcion\": \"El paquete contiene 5 camisetas y 3 pantalon corto\",\n        \"destinatario\": 1\n    }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "servicio_destinatarios",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9002/destinatarios",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9002",
+									"path": [
+										"destinatarios"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"dni\": \"61231232P\",\r\n    \"nombre\": \"Juan\",\r\n    \"apellido\": \"Perez\",\r\n    \"numTelefono\": \"95123123\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:9002/destinatarios",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9002",
+									"path": [
+										"destinatarios"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"dni\": \"3132132X\",\r\n    \"nombre\": \"Ricardo\",\r\n    \"apellido\": \"Huaripata\",\r\n    \"numTelefono\": \"512323451\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:9002/destinatarios",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9002",
+											"path": [
+												"destinatarios"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 25 Jul 2024 15:32:31 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"dni\": \"3132132X\",\n    \"nombre\": \"Ricardo\",\n    \"apellido\": \"Huaripata\",\n    \"numTelefono\": \"512323451\"\n}"
+								}
+							]
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:9002/destinatarios/3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "9002",
+									"path": [
+										"destinatarios",
+										"3"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:9002/destinatarios/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "9002",
+											"path": [
+												"destinatarios",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Thu, 25 Jul 2024 16:55:35 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"dni\": \"3132132X\",\n    \"nombre\": \"Ricardo\",\n    \"apellido\": \"Huaripata\",\n    \"numTelefono\": \"512323451\",\n    \"envios\": [\n        {\n            \"id\": 1,\n            \"fechaCreacion\": \"2024-05-18\",\n            \"estado\": \"En almacen\",\n            \"descripcion\": \"El paquete contiene 2 camisetas y 1 pantalon corto\",\n            \"destinatario\": 1\n        },\n        {\n            \"id\": 3,\n            \"fechaCreacion\": \"2024-05-11\",\n            \"estado\": \"En almacen\",\n            \"descripcion\": \"El paquete contiene 5 camisetas y 3 pantalon corto\",\n            \"destinatario\": 1\n        }\n    ]\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "max-rep-calculator",
+			"item": [
+				{
+					"name": "New Request",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"reps\": \"15\",\r\n    \"weight\": \"80\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8081/calculate/bench-press",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"calculate",
+								"bench-press"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"reps\": \"15\",\r\n    \"weight\": \"80\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/calculate/bench-press",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"calculate",
+										"bench-press"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "plain",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain;charset=UTF-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "55"
+								},
+								{
+									"key": "Date",
+									"value": "Thu, 25 Jul 2024 21:42:44 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "Your max repetition for bench press is around: 116.0 KG"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "social",
+			"item": [
+				{
+					"name": "servicio-users",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/users",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"users"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/users/1/posts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"users",
+										"1",
+										"posts"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8081/users/1/posts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8081",
+											"path": [
+												"users",
+												"1",
+												"posts"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 27 Jul 2024 21:11:59 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"cellphone\": \"123-456-7890\",\n    \"lastname\": \"Smith\",\n    \"name\": \"John\",\n    \"posts\": [\n        {\n            \"id\": 1,\n            \"title\": \"Introduction to Java Programming\",\n            \"user\": 1\n        },\n        {\n            \"id\": 6,\n            \"title\": \"Java Methods and Functions\",\n            \"user\": 1\n        },\n        {\n            \"id\": 11,\n            \"title\": \"Java GUI Programming with Swing\",\n            \"user\": 1\n        },\n        {\n            \"id\": 16,\n            \"title\": \"Concurrency in Java\",\n            \"user\": 1\n        },\n        {\n            \"id\": 21,\n            \"title\": \"Java Security\",\n            \"user\": 1\n        },\n        {\n            \"id\": 26,\n            \"title\": \"Java 9 and Beyond\",\n            \"user\": 1\n        }\n    ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "servicio-posts",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/posts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"posts"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/posts/user/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"posts",
+										"user",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "ciudad-hoteles",
+			"item": [
+				{
+					"name": "cities-service",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/cities?name=Oberá&country=Argentina",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"cities"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Oberá"
+										},
+										{
+											"key": "country",
+											"value": "Argentina"
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8081/cities?name=Bera&country=Argentina",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8081",
+											"path": [
+												"cities"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "Bera"
+												},
+												{
+													"key": "country",
+													"value": "Argentina"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 28 Jul 2024 17:30:13 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": null,\n    \"name\": null,\n    \"continent\": null,\n    \"country\": null,\n    \"state\": null,\n    \"hotels\": null\n}"
+								},
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8081/cities?name=Oberá&country=Argentina",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8081",
+											"path": [
+												"cities"
+											],
+											"query": [
+												{
+													"key": "name",
+													"value": "Oberá"
+												},
+												{
+													"key": "country",
+													"value": "Argentina"
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sun, 28 Jul 2024 17:33:13 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 2,\n    \"name\": \"Oberá\",\n    \"continent\": \"South America\",\n    \"country\": \"Argentina\",\n    \"state\": \"Misiones\",\n    \"hotels\": [\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        }\n    ]\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "hotels-service",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/hotels/city/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"hotels",
+										"city",
+										"1"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "api-gateway",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:443/cities-service/cities?name=Oberá&country=Argentina",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "443",
+							"path": [
+								"cities-service",
+								"cities"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Oberá"
+								},
+								{
+									"key": "country",
+									"value": "Argentina"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:443/cities-service/cities?name=Oberá&country=Argentina",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "443",
+									"path": [
+										"cities-service",
+										"cities"
+									],
+									"query": [
+										{
+											"key": "name",
+											"value": "Oberá"
+										},
+										{
+											"key": "country",
+											"value": "Argentina"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "transfer-encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 29 Jul 2024 00:19:35 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 2,\n    \"name\": \"Oberá\",\n    \"continent\": \"South America\",\n    \"country\": \"Argentina\",\n    \"state\": \"Misiones\",\n    \"hotels\": [\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Sunset View\",\n            \"stars\": 4,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 5,\n            \"name\": \"City Lights Inn\",\n            \"stars\": 3,\n            \"cityId\": 2\n        },\n        {\n            \"id\": 8,\n            \"name\": \"Luxury Haven\",\n            \"stars\": 5,\n            \"cityId\": 2\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "config-server",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://root:s3cr3t@localhost:8888/products-service/default",
+							"protocol": "http",
+							"auth": {
+								"user": "root",
+								"password": "s3cr3t"
+							},
+							"host": [
+								"localhost"
+							],
+							"port": "8888",
+							"path": [
+								"products-service",
+								"default"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "New Request",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/cities-service/default",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"cities-service",
+										"default"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Date",
+									"value": "Tue, 30 Jul 2024 22:03:15 GMT"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=60"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"name\": \"cities-service\",\n    \"profiles\": [\n        \"default\"\n    ],\n    \"label\": null,\n    \"version\": \"550bea5116052853da01fa87196afa723fa639a3\",\n    \"state\": null,\n    \"propertySources\": [\n        {\n            \"name\": \"https://github.com/ricardohuaripata/TodoCode-Curso-Microservicios.git/tutorial-config-server/config-data/cities-service.yml\",\n            \"source\": {\n                \"spring.application.name\": \"cities-service\",\n                \"server.port\": 8081,\n                \"eureka.client.service-url.defaultZone\": \"http://localhost:8761/eureka\"\n            }\n        }\n    ]\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "ProyectoFinal",
+			"item": [
+				{
+					"name": "products-service",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"lavadora\",\r\n    \"brand\": \"balay\",\r\n    \"price\": 249.99\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"frigorifico\",\r\n    \"brand\": \"balay\",\r\n    \"price\": 199.99\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8081/products",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8081",
+											"path": [
+												"products"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 02 Aug 2024 00:24:17 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"name\": \"frigorifico\",\n    \"brand\": \"balay\",\n    \"price\": 199.99,\n    \"createdAt\": \"02-08-2024 00:24:17\",\n    \"updatedAt\": \"02-08-2024 00:24:17\"\n}"
+								}
+							]
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/products",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"products"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8081/products",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8081",
+											"path": [
+												"products"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 06 Aug 2024 00:15:42 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 4,\n        \"name\": \"lavadora\",\n        \"brand\": \"LG\",\n        \"price\": 299.99,\n        \"createdAt\": \"03-08-2024 01:25:24\",\n        \"updatedAt\": \"03-08-2024 01:25:24\"\n    },\n    {\n        \"id\": 5,\n        \"name\": \"lavadora\",\n        \"brand\": \"balay\",\n        \"price\": 249.99,\n        \"createdAt\": \"03-08-2024 01:26:23\",\n        \"updatedAt\": \"03-08-2024 01:26:23\"\n    },\n    {\n        \"id\": 6,\n        \"name\": \"ejemplo\",\n        \"brand\": \"ejemplo\",\n        \"price\": 249.99,\n        \"createdAt\": \"03-08-2024 17:52:45\",\n        \"updatedAt\": \"03-08-2024 17:52:45\"\n    }\n]"
+								}
+							]
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"name\": \"frigorifico\",\r\n    \"brand\": \"balay\",\r\n    \"price\": 299.99\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/products/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"products",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"name\": \"frigorifico\",\r\n    \"brand\": \"balay\",\r\n    \"price\": 299.99\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8081/products/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8081",
+											"path": [
+												"products",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 02 Aug 2024 01:53:58 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"name\": \"frigorifico\",\n    \"brand\": \"balay\",\n    \"price\": 299.99,\n    \"createdAt\": \"02-08-2024 02:24:17\",\n    \"updatedAt\": \"02-08-2024 03:53:58\"\n}"
+								}
+							]
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8081/products/33",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"products",
+										"33"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": 1,\r\n    \"items\": [\r\n        {\r\n            \"id\": 4,\r\n            \"productId\": 1,\r\n            \"quantity\": 2\r\n        }\r\n    ],\r\n    \"createdAt\": \"02-08-2024 18:15:56\",\r\n    \"updatedAt\": \"02-08-2024 20:24:48\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/products/cart/response",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"products",
+										"cart",
+										"response"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": 1,\r\n    \"items\": [\r\n        {\r\n            \"id\": 4,\r\n            \"productId\": 1,\r\n            \"quantity\": 2\r\n        }\r\n    ],\r\n    \"createdAt\": \"02-08-2024 18:15:56\",\r\n    \"updatedAt\": \"02-08-2024 20:24:48\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8081/products/cart/response",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8081",
+											"path": [
+												"products",
+												"cart",
+												"response"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 02 Aug 2024 23:59:59 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"items\": [\n        {\n            \"id\": 4,\n            \"productId\": 1,\n            \"quantity\": 2,\n            \"unitPrice\": 299.99\n        }\n    ],\n    \"createdAt\": \"02-08-2024 18:15:56\",\n    \"updatedAt\": \"02-08-2024 20:24:48\",\n    \"totalPrice\": 599.98,\n    \"totalQuantity\": 2\n}"
+								}
+							]
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "[5,4,6]",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8081/products/find",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8081",
+									"path": [
+										"products",
+										"find"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8081/products",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8081",
+											"path": [
+												"products"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 02 Aug 2024 23:26:43 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"frigorifico\",\n        \"brand\": \"balay\",\n        \"price\": 299.99,\n        \"createdAt\": \"02-08-2024 02:24:17\",\n        \"updatedAt\": \"02-08-2024 03:53:58\"\n    },\n    {\n        \"id\": 4,\n        \"name\": \"lavadora\",\n        \"brand\": \"LG\",\n        \"price\": 299.99,\n        \"createdAt\": \"03-08-2024 01:25:24\",\n        \"updatedAt\": \"03-08-2024 01:25:24\"\n    },\n    {\n        \"id\": 5,\n        \"name\": \"lavadora\",\n        \"brand\": \"balay\",\n        \"price\": 249.99,\n        \"createdAt\": \"03-08-2024 01:26:23\",\n        \"updatedAt\": \"03-08-2024 01:26:23\"\n    }\n]"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "carts-service",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/carts",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"carts"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8082/carts",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8082",
+											"path": [
+												"carts"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 02 Aug 2024 14:16:22 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"items\": null,\n    \"createdAt\": \"02-08-2024 16:16:22\",\n    \"updatedAt\": \"02-08-2024 16:16:22\"\n}"
+								}
+							]
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/carts/5",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"carts",
+										"5"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": null,
+											"disabled": true
+										}
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8082/carts/4",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8082",
+											"path": [
+												"carts",
+												"4"
+											],
+											"query": [
+												{
+													"key": "",
+													"value": null,
+													"disabled": true
+												}
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 03 Aug 2024 21:24:22 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 4,\n    \"items\": [\n        {\n            \"id\": 9,\n            \"product\": {\n                \"id\": 5,\n                \"name\": \"lavadora\",\n                \"brand\": \"balay\",\n                \"price\": 249.99,\n                \"createdAt\": \"03-08-2024 01:26:23\",\n                \"updatedAt\": \"03-08-2024 01:26:23\"\n            },\n            \"quantity\": 1\n        },\n        {\n            \"id\": 10,\n            \"product\": {\n                \"id\": 6,\n                \"name\": \"ejemplo\",\n                \"brand\": \"ejemplo\",\n                \"price\": 249.99,\n                \"createdAt\": \"03-08-2024 17:52:45\",\n                \"updatedAt\": \"03-08-2024 17:52:45\"\n            },\n            \"quantity\": 1\n        }\n    ],\n    \"createdAt\": \"02-08-2024 20:24:35\",\n    \"updatedAt\": \"03-08-2024 23:24:13\",\n    \"totalPrice\": 499.98,\n    \"totalQuantity\": 2\n}"
+								}
+							]
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"productId\": 6,\r\n    \"quantity\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8082/carts/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"carts",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"productId\": 5,\r\n    \"quantity\": 1\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8082/carts/4",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8082",
+											"path": [
+												"carts",
+												"4"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 03 Aug 2024 21:22:28 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 4,\n    \"items\": [\n        {\n            \"id\": 8,\n            \"product\": {\n                \"id\": 6,\n                \"name\": \"ejemplo\",\n                \"brand\": \"ejemplo\",\n                \"price\": 249.99,\n                \"createdAt\": \"03-08-2024 17:52:45\",\n                \"updatedAt\": \"03-08-2024 17:52:45\"\n            },\n            \"quantity\": 1\n        },\n        {\n            \"id\": 9,\n            \"product\": {\n                \"id\": 5,\n                \"name\": \"lavadora\",\n                \"brand\": \"balay\",\n                \"price\": 249.99,\n                \"createdAt\": \"03-08-2024 01:26:23\",\n                \"updatedAt\": \"03-08-2024 01:26:23\"\n            },\n            \"quantity\": 1\n        }\n    ],\n    \"createdAt\": \"02-08-2024 20:24:35\",\n    \"updatedAt\": \"03-08-2024 23:22:28\",\n    \"totalPrice\": 499.98,\n    \"totalQuantity\": 2\n}"
+								}
+							]
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/carts/2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"carts",
+										"2"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8082/carts/2",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8082",
+											"path": [
+												"carts",
+												"2"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "plain",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "text/plain;charset=UTF-8"
+										},
+										{
+											"key": "Content-Length",
+											"value": "21"
+										},
+										{
+											"key": "Date",
+											"value": "Fri, 02 Aug 2024 18:13:01 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "Successfully deleted."
+								}
+							]
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8082/carts/items/8",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8082",
+									"path": [
+										"carts",
+										"items",
+										"8"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "DELETE",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8082/carts/items/8",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8082",
+											"path": [
+												"carts",
+												"items",
+												"8"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 03 Aug 2024 21:22:54 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 4,\n    \"items\": [\n        {\n            \"id\": 9,\n            \"product\": {\n                \"id\": 5,\n                \"name\": \"lavadora\",\n                \"brand\": \"balay\",\n                \"price\": 249.99,\n                \"createdAt\": \"03-08-2024 01:26:23\",\n                \"updatedAt\": \"03-08-2024 01:26:23\"\n            },\n            \"quantity\": 1\n        }\n    ],\n    \"createdAt\": \"02-08-2024 20:24:35\",\n    \"updatedAt\": \"03-08-2024 23:22:54\",\n    \"totalPrice\": 249.99,\n    \"totalQuantity\": 1\n}"
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "sales-service",
+					"item": [
+						{
+							"name": "New Request",
+							"request": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"cartId\": 6,\r\n    \"firstName\": \"Ricardo\",\r\n    \"lastName\": \"Huaripata\",\r\n    \"country\": \"España\",\r\n    \"city\": \"Málaga\",\r\n    \"postalCode\": \"49023\",\r\n    \"addressLine1\": \"Calle Luis de Gongora\",\r\n    \"addressLine2\": \"Nº 13, 2ºA\",\r\n    \"contactEmail\": \"ejemplo@hotmail.com\",\r\n    \"contactPhone\": \"77040813\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8083/sales",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"sales"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"cartId\": 4,\r\n    \"firstName\": \"Ricardo\",\r\n    \"lastName\": \"Huaripata\",\r\n    \"country\": \"España\",\r\n    \"city\": \"Málaga\",\r\n    \"postalCode\": \"49023\",\r\n    \"addressLine1\": \"Calle Luis de Gongora\",\r\n    \"addressLine2\": \"Nº 13, 2ºA\",\r\n    \"contactEmail\": \"ejemplo@hotmail.com\",\r\n    \"contactPhone\": \"77040813\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8083/sales",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8083",
+											"path": [
+												"sales"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 03 Aug 2024 20:59:59 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"items\": [\n        {\n            \"id\": 1,\n            \"productId\": 4,\n            \"name\": \"lavadora\",\n            \"brand\": \"LG\",\n            \"price\": 299.99,\n            \"quantity\": 1\n        },\n        {\n            \"id\": 2,\n            \"productId\": 6,\n            \"name\": \"ejemplo\",\n            \"brand\": \"ejemplo\",\n            \"price\": 249.99,\n            \"quantity\": 2\n        }\n    ],\n    \"firstName\": \"Ricardo\",\n    \"lastName\": \"Huaripata\",\n    \"country\": \"España\",\n    \"city\": \"Málaga\",\n    \"postalCode\": \"49023\",\n    \"addressLine1\": \"Calle Luis de Gongora\",\n    \"addressLine2\": \"Nº 13, 2ºA\",\n    \"contactEmail\": \"ejemplo@hotmail.com\",\n    \"contactPhone\": \"77040813\",\n    \"createdAt\": \"03-08-2024 22:59:59\",\n    \"updatedAt\": \"03-08-2024 22:59:59\"\n}"
+								}
+							]
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:8083/sales/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"sales",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "http://localhost:8083/sales/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8083",
+											"path": [
+												"sales",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Tue, 06 Aug 2024 00:20:50 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"items\": [\n        {\n            \"id\": 1,\n            \"productId\": 4,\n            \"name\": \"lavadora\",\n            \"brand\": \"LG\",\n            \"price\": 299.99,\n            \"quantity\": 1\n        },\n        {\n            \"id\": 2,\n            \"productId\": 6,\n            \"name\": \"ejemplo\",\n            \"brand\": \"ejemplo\",\n            \"price\": 249.99,\n            \"quantity\": 2\n        }\n    ],\n    \"firstName\": \"Campo editado\",\n    \"lastName\": \"Campo editado\",\n    \"country\": \"España\",\n    \"city\": \"Málaga\",\n    \"postalCode\": \"49023\",\n    \"addressLine1\": \"Calle Luis de Gongora\",\n    \"addressLine2\": \"Nº 13, 2ºA\",\n    \"contactEmail\": \"ejemplo@hotmail.com\",\n    \"contactPhone\": \"77040813\",\n    \"createdAt\": \"03-08-2024 22:59:59\",\n    \"updatedAt\": \"04-08-2024 00:00:54\"\n}"
+								}
+							]
+						},
+						{
+							"name": "New Request",
+							"request": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"firstName\": \"Campo editado\",\r\n    \"lastName\": \"Campo editado\",\r\n    \"country\": \"España\",\r\n    \"city\": \"Málaga\",\r\n    \"postalCode\": \"49023\",\r\n    \"addressLine1\": \"Calle Luis de Gongora\",\r\n    \"addressLine2\": \"Nº 13, 2ºA\",\r\n    \"contactEmail\": \"ejemplo@hotmail.com\",\r\n    \"contactPhone\": \"77040813\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8083/sales/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"sales",
+										"1"
+									]
+								}
+							},
+							"response": [
+								{
+									"name": "New Request",
+									"originalRequest": {
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"firstName\": \"Campo editado\",\r\n    \"lastName\": \"Campo editado\",\r\n    \"country\": \"España\",\r\n    \"city\": \"Málaga\",\r\n    \"postalCode\": \"49023\",\r\n    \"addressLine1\": \"Calle Luis de Gongora\",\r\n    \"addressLine2\": \"Nº 13, 2ºA\",\r\n    \"contactEmail\": \"ejemplo@hotmail.com\",\r\n    \"contactPhone\": \"77040813\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "http://localhost:8083/sales/1",
+											"protocol": "http",
+											"host": [
+												"localhost"
+											],
+											"port": "8083",
+											"path": [
+												"sales",
+												"1"
+											]
+										}
+									},
+									"status": "OK",
+									"code": 200,
+									"_postman_previewlanguage": "json",
+									"header": [
+										{
+											"key": "Content-Type",
+											"value": "application/json"
+										},
+										{
+											"key": "Transfer-Encoding",
+											"value": "chunked"
+										},
+										{
+											"key": "Date",
+											"value": "Sat, 03 Aug 2024 22:00:54 GMT"
+										},
+										{
+											"key": "Keep-Alive",
+											"value": "timeout=60"
+										},
+										{
+											"key": "Connection",
+											"value": "keep-alive"
+										}
+									],
+									"cookie": [],
+									"body": "{\n    \"id\": 1,\n    \"items\": [\n        {\n            \"id\": 1,\n            \"productId\": 4,\n            \"name\": \"lavadora\",\n            \"brand\": \"LG\",\n            \"price\": 299.99,\n            \"quantity\": 1\n        },\n        {\n            \"id\": 2,\n            \"productId\": 6,\n            \"name\": \"ejemplo\",\n            \"brand\": \"ejemplo\",\n            \"price\": 249.99,\n            \"quantity\": 2\n        }\n    ],\n    \"firstName\": \"Campo editado\",\n    \"lastName\": \"Campo editado\",\n    \"country\": \"España\",\n    \"city\": \"Málaga\",\n    \"postalCode\": \"49023\",\n    \"addressLine1\": \"Calle Luis de Gongora\",\n    \"addressLine2\": \"Nº 13, 2ºA\",\n    \"contactEmail\": \"ejemplo@hotmail.com\",\n    \"contactPhone\": \"77040813\",\n    \"createdAt\": \"03-08-2024 22:59:59\",\n    \"updatedAt\": \"04-08-2024 00:00:54\"\n}"
+								}
+							]
+						}
+					]
+				}
+			]
+		}
+	]
+}
